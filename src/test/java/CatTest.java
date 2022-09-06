@@ -10,6 +10,8 @@ import org.mockito.junit.MockitoJUnitRunner;
 import java.util.Arrays;
 import java.util.List;
 
+import static org.junit.Assert.assertEquals;
+
 @RunWith(MockitoJUnitRunner.class)
 public class CatTest {
     @Mock
@@ -32,4 +34,17 @@ public class CatTest {
     List<String> actual = cat.getFood();
     Assert.assertEquals(expected, actual);
     }
+    @Test
+    public void testCatMethodGetFoodException() throws Exception {
+    try{
+        Cat cat =  new Cat(feline);
+        Mockito.when(feline.eatMeat()).thenThrow(new Exception("Неизвестный вид животного, используйте значение Травоядное или Хищник"));
+        cat.getFood();
+        }
+    catch (Exception exception) {
+        assertEquals("Неизвестный вид животного, используйте значение Травоядное или Хищник", exception.getMessage());
+        }
+    }
+
+
 }

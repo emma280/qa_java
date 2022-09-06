@@ -39,4 +39,9 @@ public class LionTest {
     List<String> actual = lion.getFood();
     Assert.assertEquals(expected, actual);
     }
+    @Test (expected = Exception.class)
+    public void createLionWithMissingSexExpectException() throws Exception {
+        Lion lion = new Lion("qwerty", feline);
+    }
+
 }
